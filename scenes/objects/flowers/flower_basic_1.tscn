@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ws0qq0w031ka"]
+
+[ext_resource type="Script" path="res://assets/scripts/flowers.gd" id="1_eg8vv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2nefb"]
+radius = 4.66649
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pthim"]
+load_path = "res://.godot/imported/kytička_basic1.png-7433b88391458aae20fd658f38b83197.ctex"
+
+[node name="FlowerBasic1" type="Area2D" groups=["basic", "flowers"]]
+script = ExtResource("1_eg8vv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2nefb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = SubResource("CompressedTexture2D_pthim")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

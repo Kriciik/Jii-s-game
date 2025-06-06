@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamPlaylist" load_steps=3 format=3 uid="uid://o342m0vjk0yu"]
+
+[ext_resource type="AudioStream" uid="uid://bojjqg85xvjgp" path="res://SFX/flower_pickupt.wav" id="1_o8klh"]
+[ext_resource type="AudioStream" uid="uid://ci1jpsofxissq" path="res://SFX/ground_hit.mp3" id="2_al7rm"]
+
+[resource]
+stream_count = 2
+stream_0 = ExtResource("1_o8klh")
+stream_1 = ExtResource("2_al7rm")

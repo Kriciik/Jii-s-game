@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://cepa227y2f376"]
+
+[ext_resource type="Script" path="res://assets/scripts/flowers.gd" id="1_co8cm"]
+[ext_resource type="Texture2D" uid="uid://d16d3ofafeoxo" path="res://assets/game_objs/flowers/kytička_basic2.png" id="2_poa1g"]
+[ext_resource type="Texture2D" uid="uid://c0eksu6ayfj28" path="res://assets/game_objs/flowers/kytička_basic3.png" id="3_d7kgj"]
+[ext_resource type="Texture2D" uid="uid://bnl2cgdwo5bqk" path="res://assets/game_objs/flowers/kytička_basic4.png" id="4_vvlec"]
+[ext_resource type="Texture2D" uid="uid://deqs8wf7webay" path="res://assets/game_objs/flowers/kytička_basic5.png" id="5_hmks2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2nefb"]
+radius = 4.66649
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pthim"]
+load_path = "res://.godot/imported/kytička_basic1.png-7433b88391458aae20fd658f38b83197.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mtk5c"]
+radius = 4.66649
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xtpkk"]
+radius = 4.66649
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ysgt3"]
+radius = 4.66649
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pexey"]
+radius = 4.66649
+
+[node name="Flowers" type="Node2D"]
+script = ExtResource("1_co8cm")
+
+[node name="FlowerBasic1" type="Area2D" parent="." groups=["flowers"]]
+position = Vector2(0, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerBasic1"]
+shape = SubResource("CircleShape2D_2nefb")
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBasic1"]
+scale = Vector2(0.5, 0.5)
+texture = SubResource("CompressedTexture2D_pthim")
+
+[node name="FlowerBasic2" type="Area2D" parent="." groups=["flowers"]]
+position = Vector2(-16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerBasic2"]
+shape = SubResource("CircleShape2D_mtk5c")
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBasic2"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_poa1g")
+
+[node name="FlowerBasic3" type="Area2D" parent="." groups=["flowers"]]
+position = Vector2(-32, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerBasic3"]
+shape = SubResource("CircleShape2D_xtpkk")
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBasic3"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_d7kgj")
+
+[node name="FlowerBasic4" type="Area2D" parent="." groups=["flowers"]]
+position = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerBasic4"]
+shape = SubResource("CircleShape2D_ysgt3")
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBasic4"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_vvlec")
+
+[node name="FlowerBasic5" type="Area2D" parent="." groups=["flowers"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerBasic5"]
+shape = SubResource("CircleShape2D_pexey")
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBasic5"]
+position = Vector2(-0.125, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_hmks2")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

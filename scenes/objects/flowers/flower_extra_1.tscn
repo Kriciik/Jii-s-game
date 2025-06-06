@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjbw2tixk640j"]
+
+[ext_resource type="Script" path="res://assets/scripts/flowers.gd" id="1_rfw6c"]
+[ext_resource type="Texture2D" uid="uid://bjmjv8q1kcjdb" path="res://assets/game_objs/flowers/kytička_extra1.png" id="2_psc6t"]
+[ext_resource type="Texture2D" uid="uid://crjouaebu8nlb" path="res://assets/game_objs/light_texture/texture.webp" id="3_xn6o3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pexey"]
+radius = 4.66649
+
+[sub_resource type="Curve" id="Curve_ig73m"]
+min_value = 0.2
+_data = [Vector2(0, 0.692308), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_w22r3"]
+colors = PackedColorArray(0.811042, 0.671117, 7.70092e-07, 1, 1, 0.309804, 0.0392157, 1)
+
+[node name="FlowerExtra1" type="Area2D" groups=["extra", "flowers"]]
+script = ExtResource("1_rfw6c")
+point_value = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_pexey")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-0.1875, 0.3125)
+amount = 100
+lifetime = 0.9
+speed_scale = 0.5
+explosiveness = 0.15
+emission_shape = 3
+emission_rect_extents = Vector2(4, 1)
+direction = Vector2(0, -1)
+spread = 23.18
+gravity = Vector2(0, -50)
+radial_accel_min = -16.16
+damping_max = 16.161
+angle_min = -80.0
+scale_amount_min = 0.5
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_ig73m")
+color_ramp = SubResource("Gradient_w22r3")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.944008, 0.795578, 0, 1)
+energy = 0.54
+shadow_enabled = true
+texture = ExtResource("3_xn6o3")
+texture_scale = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_psc6t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

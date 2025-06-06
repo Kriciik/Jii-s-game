@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://7rbs5lp7dank"]
+
+[ext_resource type="PackedScene" uid="uid://e53cdw581dow" path="res://scenes/objects/character_body_2d.tscn" id="1_1pttx"]
+[ext_resource type="Texture2D" uid="uid://bwdsj1dj3u68f" path="res://assets/game_objs/background_image.png" id="1_6sj0u"]
+[ext_resource type="Script" path="res://scenes/levels/level_01.gd" id="1_bqify"]
+[ext_resource type="PackedScene" uid="uid://cepa227y2f376" path="res://scenes/objects/flower_scene.tscn" id="3_hsdqx"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rh4bb"]
+specular_color = Color(0.282643, 1, 0.914115, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qup40"]
+size = Vector2(1232, 64)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_bqify")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, -63)
+texture = ExtResource("1_6sj0u")
+
+[node name="demo_podlaha2" type="StaticBody2D" parent="."]
+position = Vector2(28, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="demo_podlaha2"]
+position = Vector2(-43.1678, 31.5748)
+scale = Vector2(1232, 64.5)
+texture = SubResource("CanvasTexture_rh4bb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="demo_podlaha2"]
+position = Vector2(-43.1679, 31.8248)
+shape = SubResource("RectangleShape2D_qup40")
+
+[node name="demo_podlaha3" type="StaticBody2D" parent="."]
+position = Vector2(164, -46.999)
+rotation = 1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="demo_podlaha3"]
+position = Vector2(-43.1678, 31.5748)
+scale = Vector2(1232, 64.5)
+texture = SubResource("CanvasTexture_rh4bb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="demo_podlaha3"]
+position = Vector2(-43.1679, 31.8248)
+shape = SubResource("RectangleShape2D_qup40")
+
+[node name="demo_podlaha" type="StaticBody2D" parent="."]
+position = Vector2(-92, -63)
+rotation = 1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="demo_podlaha"]
+position = Vector2(-43.1678, 31.5748)
+scale = Vector2(1232, 64.5)
+texture = SubResource("CanvasTexture_rh4bb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="demo_podlaha"]
+position = Vector2(-43.1679, 31.8248)
+shape = SubResource("RectangleShape2D_qup40")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_1pttx")]
+position = Vector2(4, -55)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(4, -55)
+scale = Vector2(1, 1.12222)
+zoom = Vector2(5.18, 5.18)
+
+[node name="FlowerSpawner" parent="." instance=ExtResource("3_hsdqx")]
+position = Vector2(0, -112)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

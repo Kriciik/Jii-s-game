@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgwbwink4ena7"]
+
+[ext_resource type="Script" path="res://assets/scripts/flowers.gd" id="1_km7rr"]
+[ext_resource type="Texture2D" uid="uid://d16d3ofafeoxo" path="res://assets/game_objs/flowers/kytička_basic2.png" id="1_yql71"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mtk5c"]
+radius = 4.66649
+
+[node name="FlowerBasic2" type="Area2D" groups=["basic", "flowers"]]
+script = ExtResource("1_km7rr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mtk5c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_yql71")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
